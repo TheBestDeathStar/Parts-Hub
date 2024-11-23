@@ -1,6 +1,7 @@
+<!-- src/App.vue -->
 <template>
   <div id="app">
-  <PartIndex />
+    <router-view></router-view> <!-- This is where the routed components will be injected -->
   </div>
 </template>
 
@@ -12,14 +13,6 @@ export default {
   name: 'App',
   components: {
     PartIndex,
-  },
-  setup() {
-    const openAddPart = () => {
-      // Open the part add form here
-    };
-    return {
-      openAddPart,
-    };
   },
 };
 </script>

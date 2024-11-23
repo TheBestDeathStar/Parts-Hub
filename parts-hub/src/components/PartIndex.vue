@@ -5,32 +5,23 @@
       <!-- Filter Component -->
       <PartFilter @filter="applyFilter" />
   
-      <!-- Add Part Button -->
-      <button @click="openAddPart">Add Part</button>
-  
+      <!-- Add Part Button (Redirect to Add Part page) -->
+    <button @click="goToAddPartPage">Add Part</button>
+
       <!-- List of Parts -->
       <div v-for="(part, index) in filteredParts" :key="index">
         <PartCard :part="part" @remove="removePart" />
       </div>
-  
-      <!-- Add Part Form -->
-      <div v-if="isAdding">
-        <div>
-          <input v-model="newPart.name" placeholder="Part Name" />
-          <input v-model="newPart.price" type="number" placeholder="Part Price" />
-          <input v-model="newPart.imageSrc" placeholder="Image URL" />
-          <button @click="addPart">Add Part</button>
-          <button @click="cancelAdd">Cancel</button>
-        </div>
-      </div>
-    </div>
+  </div>
   </template>
   
   <script setup>
-  import { ref, computed } from 'vue';
-  import PartCard from './PartCard.vue';
-  import PartFilter from './PartFilter.vue';
-  
+import { ref, computed } from 'vue';
+import { useRouter } from 'vue-router'; // Import useRouter
+import PartCard from './PartCard.vue';
+import PartFilter from './PartFilter.vue';
+
+const router = useRouter(); // Initialize router
   // List of parts
   const parts = ref([
   { name: 'Motor Block', price: 120, imageSrc: '/src/images/motorblock.jpg' },
@@ -49,25 +40,12 @@
     return parts.value.filter(part => part.name.toLowerCase().includes(filterText.value.toLowerCase()));
   });
   
-  // Open the form to add a part
-  const openAddPart = () => {
-    isAdding.value = true;
-  };
-  
-  // Add new part to the list
-  const addPart = () => {
-    if (newPart.value.name && newPart.value.price && newPart.value.imageSrc) {
-      parts.value.push({ ...newPart.value });
-      newPart.value = { name: '', price: '', imageSrc: '' };
-      isAdding.value = false;
-    }
-  };
-  
-  // Cancel the form
-  const cancelAdd = () => {
-    newPart.value = { name: '', price: '', imageSrc: '' };
-    isAdding.value = false;
-  };
+  // Go to the Add Part page when the button is clicked
+const goToAddPartPage = () => {
+  router.push('/add-part'); // Redirect to the add part page
+};
+    
+
   
   // Remove a part from the list
   const removePart = (partToRemove) => {

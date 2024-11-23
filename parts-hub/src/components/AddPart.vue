@@ -1,65 +1,71 @@
+<!-- src/components/AddPart.vue -->
 <template>
-    <div class="add-part">
-      <h2>Add New Part</h2>
-      <form @submit.prevent="addPart">
-        <input v-model="partName" type="text" placeholder="Part Name" required />
-        <input v-model="price" type="number" placeholder="Price" required />
-        <input v-model="imageUrl" type="url" placeholder="Image URL" required />
-        <button type="submit">Add Part</button>
-        <button @click="cancelAdd">Cancel</button>
-      </form>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        partName: '',
-        price: '',
-        imageUrl: '',
-      };
-    },
-    methods: {
-      addPart() {
-        // Logic for adding a new part
-        console.log(this.partName, this.price, this.imageUrl);
-      },
-      cancelAdd() {
-        // Logic for canceling part addition
-        this.partName = '';
-        this.price = '';
-        this.imageUrl = '';
-      },
-    },
-  };
-  </script>
-  
-  <style>
-  .add-part {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
+  <div class="add-part">
+    <h2>Add New Part</h2>
+    <form @submit.prevent="addPart">
+      <input v-model="partName" type="text" placeholder="Part Name" required />
+      <input v-model="price" type="number" placeholder="Price" required />
+      <input v-model="imageUrl" type="url" placeholder="Image URL" required />
+      <textarea v-model="description" placeholder="Description" required></textarea>
+      <button type="submit">Add Part</button>
+      <button @click="cancelAdd">Cancel</button>
+    </form>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter(); 
+
+const partName = ref('');
+const price = ref('');
+const imageUrl = ref('');
+const description = ref('');
+
+const addPart = () => {
+  if (partName.value && price.value && imageUrl.value && description.value) {
+    console.log({ partName: partName.value, price: price.value, imageUrl: imageUrl.value, description: description.value });
+    router.push('/'); // Navigate back to home after adding part
   }
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  input {
-    margin: 10px 0;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  button {
-    background-color: #e63946;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-  }
-  button:hover {
-    background-color: #d62828;
-  }
-  </style>
-  
+};
+
+const cancelAdd = () => {
+  router.push('/'); // Navigate back to home on cancel
+};
+</script>
+
+<style scoped>
+.add-part {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 400px;
+  margin: 0 auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input, textarea {
+  margin: 10px 0;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #e63946;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #d62828;
+}
+</style>
