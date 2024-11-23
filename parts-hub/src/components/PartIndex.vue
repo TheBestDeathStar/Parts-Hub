@@ -33,9 +33,9 @@
   
   // List of parts
   const parts = ref([
-    { name: 'Motor Block', price: 120, imageSrc: '/images/motorblock.jpg' },
-    { name: 'Car Wheel', price: 60, imageSrc: '/images/carwheel.jpg' },
-  ]);
+  { name: 'Motor Block', price: 120, imageSrc: '/src/images/motorblock.jpg' },
+  { name: 'Car Wheel', price: 60, imageSrc: '/src/images/carwheel.jpg' },
+]);
   
   // Add new part state
   const isAdding = ref(false);

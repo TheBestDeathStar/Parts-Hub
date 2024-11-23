@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <h1>Parts Hub</h1>
-    <button @click="openAddPart">Add Part</button>
-    <PartIndex />
+  <PartIndex />
   </div>
 </template>
 
