@@ -1,7 +1,7 @@
 <!-- src/App.vue -->
 <template>
   <div id="app">
-    <router-view></router-view> <!-- This is where the routed components will be injected -->
+    <router-view @add="addPart" /> <!-- Listen for the 'add' event here -->
   </div>
 </template>
 
@@ -14,6 +14,13 @@ export default {
   components: {
     PartIndex,
   },
+  methods: {
+    addPart(newPart) {
+      // Add the new part to the list when the event is triggered
+      this.$router.push('/');
+      this.$root.$emit('add', newPart);
+    }
+  }
 };
 </script>
 

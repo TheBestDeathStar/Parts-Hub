@@ -26,7 +26,13 @@ const description = ref('');
 
 const addPart = () => {
   if (partName.value && price.value && imageUrl.value && description.value) {
-    console.log({ partName: partName.value, price: price.value, imageUrl: imageUrl.value, description: description.value });
+    const newPart = { 
+      name: partName.value, 
+      price: price.value, 
+      imageSrc: imageUrl.value 
+    };
+    // Emit the 'add' event to the parent component (App.vue or PartIndex.vue)
+    window.dispatchEvent(new CustomEvent('add', { detail: newPart }));
     router.push('/'); // Navigate back to home after adding part
   }
 };

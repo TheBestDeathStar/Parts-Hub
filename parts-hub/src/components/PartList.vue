@@ -1,26 +1,26 @@
 <template>
-    <div class="part-list">
-      <div v-for="(part, index) in parts" :key="index" class="part-card">
-        <img :src="part.imageUrl" alt="Part Image" />
-        <h3>{{ part.name }}</h3>
-        <p>{{ part.price }} $</p>
-        <button @click="removePart(index)">Remove</button>
-      </div>
+  <div class="part-list">
+    <div v-for="(part, index) in parts" :key="index" class="part-card">
+      <img :src="part.imageSrc" alt="Part Image" />
+      <h3>{{ part.name }}</h3>
+      <p>{{ part.price }} $</p>
+      <button @click="removePart(index)">Remove</button>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    props: {
-      parts: Array,
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    parts: Array,
+  },
+  methods: {
+    removePart(index) {
+      this.parts.splice(index, 1);
     },
-    methods: {
-      removePart(index) {
-        this.parts.splice(index, 1);
-      },
-    },
-  };
-  </script>
+  },
+};
+</script>
   
   <style>
   .part-list {
