@@ -3,6 +3,7 @@
     <div v-for="(part, index) in parts" :key="index" class="part-card">
       <img :src="part.imageSrc" alt="Part Image" />
       <h3>{{ part.name }}</h3>
+      <p>{{part.description}}</p>
       <p>{{ part.price }} $</p>
       <button @click="removePart(index)">Remove</button>
     </div>

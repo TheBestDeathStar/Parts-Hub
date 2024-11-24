@@ -29,7 +29,8 @@ const addPart = () => {
     const newPart = { 
       name: partName.value, 
       price: price.value, 
-      imageSrc: imageUrl.value 
+      imageSrc: imageUrl.value ,
+      description: description.value
     };
     // Emit the 'add' event to the parent component (App.vue or PartIndex.vue)
     window.dispatchEvent(new CustomEvent('add', { detail: newPart }));

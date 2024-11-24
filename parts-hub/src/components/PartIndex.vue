@@ -30,8 +30,8 @@ const router = useRouter();
 // Load parts from localStorage or use defaults
 const storedParts = localStorage.getItem('parts');
 const defaultParts = [
-  { name: 'Motor Block', price: 120, imageSrc: '/src/images/motorblock.jpg' },
-  { name: 'Car Wheel', price: 60, imageSrc: '/src/images/carwheel.jpg' },
+  { name: 'Motor Block', price: 120, imageSrc: '/src/images/motorblock.jpg', description: 'A high-performance motor block for cars.'},
+  { name: 'Car Wheel', price: 60, imageSrc: '/src/images/carwheel.jpg', description: 'Durable and stylish car wheels for smooth rides.'  },
 ];
 const parts = ref(storedParts ? JSON.parse(storedParts) : defaultParts);
 
@@ -88,7 +88,7 @@ const resetParts = () => {
 <style scoped>
 .part-index {
   text-align: left;
-  padding: 20px;
+  padding: 0px;
   height: 100%;
   width: 100%;
 }
