@@ -1,7 +1,7 @@
 <!-- src/App.vue -->
 <template>
   <div id="app">
-    <router-view @add="addPart" /> <!-- Listen for the 'add' event here -->
+    <router-view></router-view> <!-- This is where the routed components will be injected -->
   </div>
 </template>
 
@@ -14,31 +14,31 @@ export default {
   components: {
     PartIndex,
   },
-  methods: {
-    addPart(newPart) {
-      // Add the new part to the list when the event is triggered
-      this.$router.push('/');
-      this.$root.$emit('add', newPart);
-    }
-  }
 };
 </script>
 
 <style>
-#app {
-  text-align: center;
+html{
   background-color: #333;
-  color: white;
+}
+#app {
+  color: rgb(0, 0, 0);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+padding-left: 20px;
+padding-right: 20px;
 }
 
 h1 {
-  font-size: 2em;
+  text-align: center;
+  font-size: 3em;
   color: #e63946;
+  margin-top: 0%;
 }
 
 button {

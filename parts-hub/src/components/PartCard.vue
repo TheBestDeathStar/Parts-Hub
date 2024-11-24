@@ -27,29 +27,36 @@
   </script>
   
   <style scoped>
-  .part-card {
-    background-color: white;
-    color: black;
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .part-image {
-    width: 100px;
-    height: auto;
-    margin-bottom: 10px;
-  }
-  
-  button {
-    background-color: red;
-    color: white;
-    padding: 5px;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  </style>
-  
+.part-card {
+  background-color: white;
+  color: black;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 180px; /* Ensure all cards have the same width */
+  max-width: 250px;
+  height: 270px; /* Fixed height to make cards consistent */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0;
+}
+
+.part-image {
+  width: 100%; /* Make image fill the width of the card */
+  height: 100px; /* Make image fill the full height of the card */
+  object-fit: contain; /* Ensure the entire image is shown without cropping */
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: red;
+  color: white;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+</style>

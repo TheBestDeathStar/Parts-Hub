@@ -2,19 +2,20 @@
   <div class="part-index">
     <h1>Parts Hub</h1>
 
-    <!-- Filter Component -->
-    <PartFilter @filter="applyFilter" />
-
-    <!-- Add Part Button (Redirect to Add Part page) -->
-    <button @click="goToAddPartPage">Add Part</button>
-
-    <!-- List of Parts -->
-    <div v-for="(part, index) in filteredParts" :key="index">
-      <PartCard :part="part" @remove="removePart" />
+    <!-- Filter and Add Part Button Container -->
+    <div class="filter-and-button">
+      <PartFilter @filter="applyFilter" />
+      <button @click="goToAddPartPage">Add Part</button>
     </div>
 
+    <!-- List of Parts -->
+    <div class="part-list-container">
+  <div v-for="(part, index) in filteredParts" :key="index">
+    <PartCard :part="part" @remove="removePart" />
+  </div>
     <!-- Reset Button -->
     <button class="reset-button" @click="resetParts">Reset</button>
+  </div>
   </div>
 </template>
 
@@ -86,9 +87,33 @@ const resetParts = () => {
 
 <style scoped>
 .part-index {
-  text-align: center;
+  text-align: left;
+  padding: 20px;
+  height: 100%;
+  width: 100%;
+}
+.part-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px; /* Adjust this gap if needed, or remove it for no spacing */
+  margin-left: 20px; /* Shift the part-list container to the right */
+  margin-top: 0; /* Optional: Make sure there's no unwanted margin at the top */
 }
 
+.filter-and-button {
+  display: flex; /* Pushes button to the right */
+  justify-content: center;
+  margin-bottom: 20px;
+  width: 100%; /* Ensures the container spans the full width */
+}
+.filter-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: auto; /* Makes the filter box take only the space it needs */
+  margin-bottom: 0;
+}
 button {
   margin: 10px;
   padding: 10px;
@@ -104,10 +129,6 @@ button:hover {
   background-color: #0056b3;
 }
 
-div {
-  margin-bottom: 15px;
-}
-
 input {
   padding: 10px;
   font-size: 16px;
@@ -115,6 +136,8 @@ input {
   border-radius: 4px;
   border: 1px solid #ddd;
 }
+
+/* Ensure parts are laid out horizontally */
 
 .reset-button {
   position: fixed;
@@ -128,3 +151,4 @@ input {
   background-color: #c82333;
 }
 </style>
+

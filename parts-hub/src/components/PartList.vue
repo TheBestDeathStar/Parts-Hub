@@ -23,25 +23,12 @@ export default {
 </script>
   
   <style>
-  .part-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  .part-card {
-    background: white;
-    padding: 20px;
-    margin: 10px;
-    border-radius: 8px;
-    width: 200px;
-    text-align: center;
-  }
-  button {
-    background-color: #e63946;
-    color: white;
-    padding: 5px;
-    border: none;
-    cursor: pointer;
-  }
+.part-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+  margin-top: 20px; /* Ensures some margin from the top */
+}
   </style>
   

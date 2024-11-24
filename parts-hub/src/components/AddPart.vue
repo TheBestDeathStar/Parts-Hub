@@ -1,7 +1,7 @@
 <!-- src/components/AddPart.vue -->
 <template>
   <div class="add-part">
-    <h2>Add New Part</h2>
+    <h2>List a part.</h2>
     <form @submit.prevent="addPart">
       <input v-model="partName" type="text" placeholder="Part Name" required />
       <input v-model="price" type="number" placeholder="Price" required />
@@ -43,12 +43,19 @@ const cancelAdd = () => {
 </script>
 
 <style scoped>
+.h2{
+  color: black;
+}
 .add-part {
   background-color: white;
   padding: 20px;
   border-radius: 5px;
   width: 400px;
   margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the element both vertically and horizontally */
 }
 
 form {
